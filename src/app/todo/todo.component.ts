@@ -9,7 +9,6 @@ import { ITodo } from '../interfaces/todo';
 export class TodoComponent {
 
   constructor() {
-    alert(ErrorFalso)
   }
 
   todos: ITodo[] = [

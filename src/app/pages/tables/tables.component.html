@@ -1,5 +1,8 @@
 <div class="container">
+  <app-add-form></app-add-form>
+</div>
+<div class="container">
   <app-table-test [users]="users"></app-table-test>
-  <app-table-test></app-table-test> <!-- Esta tabla se llena con usersFemale -->
-  <app-table-test></app-table-test> <!-- Esta tabla se llena con usersMale -->
+  <app-table-test [users]="usersFemale"></app-table-test> <!-- Esta tabla se llena con usersFemale -->
+  <app-table-test [users]="usersMale"></app-table-test> <!-- Esta tabla se llena con usersMale -->
 </div>

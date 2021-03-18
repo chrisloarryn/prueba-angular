@@ -1,0 +1,60 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div formGroupName="name">
+    <h3>Nombre</h3>
+    <label>
+      firstName:
+      <input type="text" formControlName="firstName" maxlength="30" required>
+    </label>
+    <label>
+      lastName:
+      <input type="text" formControlName="lastName" maxlength="30" required>
+    </label>
+  </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Age</mat-label>
+    <input type="number" maxlength="3" matInput placeholder="1, 2, 3, 4, etc" formControlName="age" required>
+    <!-- <mat-error ngIf="userForm.get('age').hasError('required')"> -->
+    <!-- Age is <strong>required</strong> -->
+    <!-- </mat-error> -->
+  </mat-form-field>
+  <mat-radio-group aria-label="Select an option" formControlName="gender">
+    <mat-label>Gender</mat-label><br />
+    <mat-radio-button value="F">Female</mat-radio-button>
+    <mat-radio-button value="M">Male</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field class="col-5 mb-2 mx-auto">
+    <mat-label class="placeholder-color">Email</mat-label>
+    <input type="email" matInput formControlName="email" placeholder="Ex. mail@gmail.com" />
+    <mat-error *ngIf="
+    userForm.get('email').hasError('email')
+    &&!userForm.get('email').hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="userForm.get('email').hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Username</mat-label>
+    <input type="text" maxlength="30" matInput placeholder="example" formControlName="username" required>
+    <!-- <mat-error ngIf="userForm.get('age').hasError('required')"> -->
+    <!-- Age is <strong>required</strong> -->
+    <!-- </mat-error> -->
+  </mat-form-field>
+  <section class="example-section">
+    <mat-label>Work</mat-label>
+    <mat-checkbox formControlName="isWorkNow" class="example-margin"></mat-checkbox>
+  </section>
+  <div formGroupName="company" *ngIf="userForm.get('isWorkNow').value && userForm.get('age').value > 17">
+    <h3>Company</h3>
+    <label>
+      name:
+      <input type="text" formControlName="name" maxlength="30">
+    </label>
+    <label>
+      years:
+      <input type="number" formControlName="years" maxlength="30">
+    </label>
+  </div>
+  <button type="submit" [disabled]="!userForm.valid">Submit</button>
+</form>
